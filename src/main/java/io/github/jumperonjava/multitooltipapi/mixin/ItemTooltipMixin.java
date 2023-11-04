@@ -12,7 +12,7 @@ import org.spongepowered.asm.mixin.injection.Redirect;
 import java.util.Optional;
 
 @Mixin(HandledScreen.class)
-public class ItemTooltipMixin {
+class ItemTooltipMixin {
     @Redirect(method = "drawMouseoverTooltip",at = @At(value = "INVOKE",target = "Lnet/minecraft/item/ItemStack;getTooltipData()Ljava/util/Optional;"))
     Optional<TooltipData> addMultiData(ItemStack stack){
         var original = stack.getTooltipData();

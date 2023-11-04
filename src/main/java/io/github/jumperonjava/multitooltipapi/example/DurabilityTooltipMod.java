@@ -20,6 +20,7 @@ public class DurabilityTooltipMod implements ClientModInitializer {
             }
             return Optional.empty();
         });
+        //this event is already provided by fabric api
         TooltipComponentCallback.EVENT.register(data -> {
             if(data instanceof DamagedItemData damagedItemData)
                 return new DurabilityModTooltipComponent(damagedItemData);
@@ -53,7 +54,6 @@ public class DurabilityTooltipMod implements ClientModInitializer {
         public void drawItems(TextRenderer textRenderer, int x, int y, DrawContext context) {
             context.getMatrices().push();
             context.getMatrices().translate(x,y,0);
-            //context.fill(0,0,getWidth(null),getHeight(),0x3FFFFFFF);
             float width = 1-(float) this.damage.durability / this.damage.maxDurability;
             context.fill(0,0,BAR_WIDTH,BAR_HEIGHT,0xFFFF0000);
             context.fill(0,0, (int) (BAR_WIDTH*width),BAR_HEIGHT,0xFF00FF00);

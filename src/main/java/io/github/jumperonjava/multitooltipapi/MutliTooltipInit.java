@@ -3,7 +3,7 @@ package io.github.jumperonjava.multitooltipapi;
 import net.fabricmc.api.ClientModInitializer;
 import net.fabricmc.fabric.api.client.rendering.v1.TooltipComponentCallback;
 
-public class MutliTooltipApi implements ClientModInitializer {
+public class MutliTooltipInit implements ClientModInitializer {
 
     @Override
     public void onInitializeClient() {

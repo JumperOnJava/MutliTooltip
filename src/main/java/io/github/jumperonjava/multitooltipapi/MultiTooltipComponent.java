@@ -10,6 +10,9 @@ import org.joml.Matrix4f;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * This class renders multiple tooltip components as one
+ */
 public class MultiTooltipComponent implements TooltipComponent {
     private final int height;
     private final int width;

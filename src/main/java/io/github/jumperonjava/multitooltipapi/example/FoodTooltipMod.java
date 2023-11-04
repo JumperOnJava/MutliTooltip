@@ -1,5 +1,6 @@
 package io.github.jumperonjava.multitooltipapi.example;
 
+import io.github.jumperonjava.multitooltipapi.MultiTooltipData;
 import io.github.jumperonjava.multitooltipapi.TooltipDataCallback;
 import net.fabricmc.api.ClientModInitializer;
 import net.fabricmc.fabric.api.client.rendering.v1.TooltipComponentCallback;
@@ -20,6 +21,7 @@ public class FoodTooltipMod implements ClientModInitializer {
             }
             return Optional.empty();
         });
+        //this event is already provided by fabric api
         TooltipComponentCallback.EVENT.register(data -> {
             if(data instanceof FoodItemData foodItemData)
                 return new FoodModTooltip(foodItemData);
