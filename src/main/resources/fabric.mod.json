@@ -15,7 +15,8 @@
     "client": [
       "io.github.jumperonjava.multitooltipapi.MutliTooltipInit",
       "io.github.jumperonjava.multitooltipapi.example.DurabilityTooltipMod",
-      "io.github.jumperonjava.multitooltipapi.example.FoodTooltipMod"
+      "io.github.jumperonjava.multitooltipapi.example.FoodTooltipMod",
+      "io.github.jumperonjava.multitooltipapi.example.BundleFullnessMod"
     ]
   },
   "mixins": [
