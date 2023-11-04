@@ -1,0 +1,29 @@
+{
+  "schemaVersion": 1,
+  "id": "mutlitooltipapi",
+  "version": "${version}",
+  "name": "MutliTooltipApi",
+  "description": "",
+  "authors": [],
+  "contact": {
+    "repo": "https://github.com/JavaJumper/MutliTooltipApi"
+  },
+  "license": "GPL-3.0",
+  "icon": "assets/mutlitooltipapi/icon.png",
+  "environment": "client",
+  "entrypoints": {
+    "client": [
+      "io.github.jumperonjava.multitooltipapi.MutliTooltipApi",
+      "io.github.jumperonjava.multitooltipapi.example.DurabilityTooltipMod",
+      "io.github.jumperonjava.multitooltipapi.example.FoodTooltipMod"
+    ]
+  },
+  "mixins": [
+    "mutlitooltipapi.mixins.json"
+  ],
+  "depends": {
+    "fabricloader": ">=${loader_version}",
+    "fabric": "*",
+    "minecraft": "${minecraft_version}"
+  }
+}
