@@ -60,7 +60,6 @@ public class FoodTooltipMod implements ClientModInitializer {
         public void drawItems(TextRenderer textRenderer, int x, int y, DrawContext context) {
             context.getMatrices().push();
             context.getMatrices().translate(x,y,0);
-            context.getMatrices().translate(0,0,0);
             for(int i=0;i<food.hunger;i++){
                 context.fill(0,0,SIZE,SIZE,0xFFFFFF00);
                 context.getMatrices().translate(GAP+SIZE,0,0);
