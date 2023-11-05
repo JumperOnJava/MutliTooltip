@@ -2,9 +2,7 @@ package io.github.jumperonjava.multitooltipapi;
 
 import net.minecraft.client.item.TooltipData;
 
-import javax.swing.text.html.Option;
 import java.util.ArrayList;
-import java.util.List;
 import java.util.Optional;
 
 /**

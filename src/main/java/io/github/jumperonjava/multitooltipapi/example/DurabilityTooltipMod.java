@@ -14,11 +14,10 @@ import java.util.Optional;
 public class DurabilityTooltipMod implements ClientModInitializer {
     @Override
     public void onInitializeClient() {
-        TooltipDataCallback.EVENT.register(itemStack -> {
+        TooltipDataCallback.EVENT.register((itemStack,tooltipDataList) -> {
             if (itemStack.isDamageable()) {
-                return Optional.of(new DamagedItemData(itemStack.getDamage(), itemStack.getMaxDamage()));
+                tooltipDataList.add(new DamagedItemData(itemStack.getDamage(), itemStack.getMaxDamage()));
             }
-            return Optional.empty();
         });
         //this event is already provided by fabric api
         TooltipComponentCallback.EVENT.register(data -> {

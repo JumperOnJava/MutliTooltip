@@ -14,11 +14,10 @@ import java.util.Optional;
 public class BundleFullnessMod implements ClientModInitializer {
     @Override
     public void onInitializeClient() {
-        TooltipDataCallback.EVENT.register(itemStack -> {
+        TooltipDataCallback.EVENT.register((itemStack,tooltipDataList) -> {
             if (itemStack.getItem() instanceof BundleItem bundle) {
-                return Optional.of(new BundleCustomTooltipData(BundleItem.getAmountFilled(itemStack)));
+                tooltipDataList.add(new BundleCustomTooltipData(BundleItem.getAmountFilled(itemStack)));
             }
-            return Optional.empty();
         });
         TooltipComponentCallback.EVENT.register(data -> {
             if(data instanceof BundleCustomTooltipData bundleCustomTooltipData)

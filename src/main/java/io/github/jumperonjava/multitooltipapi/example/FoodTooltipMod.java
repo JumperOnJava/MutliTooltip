@@ -1,6 +1,5 @@
 package io.github.jumperonjava.multitooltipapi.example;
 
-import io.github.jumperonjava.multitooltipapi.MultiTooltipData;
 import io.github.jumperonjava.multitooltipapi.TooltipDataCallback;
 import net.fabricmc.api.ClientModInitializer;
 import net.fabricmc.fabric.api.client.rendering.v1.TooltipComponentCallback;
@@ -10,16 +9,14 @@ import net.minecraft.client.gui.tooltip.TooltipComponent;
 import net.minecraft.client.item.TooltipData;
 import net.minecraft.item.FoodComponent;
 
-import java.util.Optional;
-
 public class FoodTooltipMod implements ClientModInitializer {
     @Override
     public void onInitializeClient() {
-        TooltipDataCallback.EVENT.register(itemStack -> {
+        TooltipDataCallback.EVENT.register((itemStack,tooltipDataList) -> {
             if (itemStack.getItem().getFoodComponent() != null) {
-                return Optional.of(new FoodItemData(itemStack.getItem().getFoodComponent()));
+                var foodData = new FoodItemData(itemStack.getItem().getFoodComponent());
+                tooltipDataList.add(foodData);
             }
-            return Optional.empty();
         });
         //this event is already provided by fabric api
         TooltipComponentCallback.EVENT.register(data -> {

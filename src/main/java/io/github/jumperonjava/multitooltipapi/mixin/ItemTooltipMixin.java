@@ -16,9 +16,8 @@ class ItemTooltipMixin {
     @Redirect(method = "drawMouseoverTooltip",at = @At(value = "INVOKE",target = "Lnet/minecraft/item/ItemStack;getTooltipData()Ljava/util/Optional;"))
     Optional<TooltipData> addMultiData(ItemStack stack){
         var original = stack.getTooltipData();
-        var mutlidata = (MultiTooltipData) TooltipDataCallback.EVENT.invoker()
-                .getTooltipData(stack)
-                .orElse(new MultiTooltipData(0));
+        var mutlidata = new MultiTooltipData(8);
+        TooltipDataCallback.EVENT.invoker().getTooltipData(stack,mutlidata);
         original.ifPresent(mutlidata::add);
         return mutlidata.optional();
     }

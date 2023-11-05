@@ -4,7 +4,8 @@ import net.fabricmc.fabric.api.event.Event;
 import net.fabricmc.fabric.api.event.EventFactory;
 import net.minecraft.client.item.TooltipData;
 import net.minecraft.item.ItemStack;
-import java.util.Optional;
+
+import java.util.List;
 
 @FunctionalInterface
 public interface TooltipDataCallback {
@@ -15,12 +16,11 @@ public interface TooltipDataCallback {
      * otherwise game will crash when trying to map TooltipData to TooltipComponent
      * If you don't need to add tooltip data to this specific itemStack you can return Optional.empty()
      */
-    public static final Event<TooltipDataCallback> EVENT = EventFactory.createArrayBacked(TooltipDataCallback.class, callbacks -> itemStack -> {
-        MultiTooltipData data = new MultiTooltipData(callbacks.length);
+    public static final Event<TooltipDataCallback> EVENT = EventFactory.createArrayBacked(TooltipDataCallback.class, callbacks -> (itemStack, tooltipDataList) -> {
+        //MultiTooltipData tooltipData = new MultiTooltipData(callbacks.length);
         for(TooltipDataCallback callback : callbacks){
-            callback.getTooltipData(itemStack).ifPresent(data::add);
+            callback.getTooltipData(itemStack,tooltipDataList);
         }
-        return data.optional();
     });
-    Optional<TooltipData> getTooltipData(ItemStack itemStack);
+    void getTooltipData(ItemStack itemStack, List<TooltipData> tooltipDataList);
 }
