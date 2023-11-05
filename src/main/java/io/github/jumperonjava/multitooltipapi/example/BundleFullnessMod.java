@@ -16,7 +16,7 @@ public class BundleFullnessMod implements ClientModInitializer {
     public void onInitializeClient() {
         TooltipDataCallback.EVENT.register((itemStack,tooltipDataList) -> {
             if (itemStack.getItem() instanceof BundleItem bundle) {
-                tooltipDataList.add(new BundleCustomTooltipData(BundleItem.getAmountFilled(itemStack)));
+                tooltipDataList.add(0,new BundleCustomTooltipData(BundleItem.getAmountFilled(itemStack)));
             }
         });
         TooltipComponentCallback.EVENT.register(data -> {

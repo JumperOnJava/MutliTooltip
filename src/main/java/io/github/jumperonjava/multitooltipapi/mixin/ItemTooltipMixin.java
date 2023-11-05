@@ -17,8 +17,8 @@ class ItemTooltipMixin {
     Optional<TooltipData> addMultiData(ItemStack stack){
         var original = stack.getTooltipData();
         var mutlidata = new MultiTooltipData(8);
-        TooltipDataCallback.EVENT.invoker().getTooltipData(stack,mutlidata);
         original.ifPresent(mutlidata::add);
+        TooltipDataCallback.EVENT.invoker().getTooltipData(stack,mutlidata);
         return mutlidata.optional();
     }
 }
